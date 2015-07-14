@@ -65,11 +65,17 @@ function createDOMelement (config) {
             el.className = this.arrayToString(config.class);
         }
         
+        /*style*/
         if (typeof config.style === 'object'){
             for(var p in config.style) {
                 el.style[p] = config.style[p];
             }
         }
+        /*value*/
+        if (typeof config.value === 'string'){
+            el.value = config.value;
+        }
+        
         
         /*html*/
         if (typeof config.html === 'string'){
@@ -92,44 +98,3 @@ function createDOMelement (config) {
     }
     return this.create(config);
 }
-
-function create(config){
-    return createDOMelement(config);
-}
-
-
-var elem = create({
-	tag: 'div',
-    class: ['alert','info'],
-    bind: {
-        value:'mail',
-        text: 'sss',
-        options:[
-            {
-                do: [
-                    {
-                    ha:'asd'
-                    }
-                ],
-        ded: {gov:'sdfdf'}
-            }   
-        ]
-    },
-    inner: [
-        {
-		    tag: 'p',
-            html: 'adf',
-        },{
-            tag:'h1',
-            style:{
-                color:'blue',
-                'font-size': '49px'
-            },
-            html:'234'
-        }
-    ]
-});
-
-//alert(go.toString());
-main.innerHTML = null;
-main.appendChild(elem);
